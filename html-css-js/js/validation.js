@@ -1,11 +1,35 @@
-/*
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    AKAI Frontend Task - Javascript
+function validate() {
 
-    W tym zadaniu postaraj się zaimplementować metody, które sprawdzą, czy dane wprowadzone
-    do formularza są poprawne. Przykładowo: czy imię i nazwisko zostało wprowadzone.
-    Możesz rozwinąć walidację danych tak bardzo, jak tylko zapragniesz.
+    if (this.validateText("first-name", /^[A-Z][a-z]+$/)
+        && this.validateText("last-name", /^[A-Z][a-z]+$/)
+        && this.validateText("email", /^\S+@\S+\.\S+$/)
+        && this.validateSection()) {
+        alert("Dane poprawne");
+        return true;
+    } else {
+        alert("Dane niepoprawne");
+        return false;
+    }
+}
 
-    Powodzenia!
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*/
+function validateText(id, regex) {
+    let input = document.getElementById(id);
+    let value = input.value.toString().trim();
+
+    return value !== "" && regex.test(value);
+}
+
+function check(id, regex) {
+    if (this.validateText(id, regex)) {
+        document.getElementById(id).classList.remove("invalid");
+    } else {
+        document.getElementById(id).classList.add("invalid");
+    }
+}
+
+function validateSection() {
+    let checkboxes = Array.from(document.querySelectorAll('input[type=checkbox]:checked'));
+
+    return checkboxes.length > 0;
+}
+

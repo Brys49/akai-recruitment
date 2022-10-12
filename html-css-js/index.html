@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
     <title>AKAI Frontend Task</title>
     <link rel="stylesheet" type="text/css" href="css/form.css">
@@ -12,13 +12,15 @@
     <div id="form-container">
         <h1 class="basic-title">Dołącz do nas!</h1>
 
-        <form method="POST">
+        <form method="post">
 
-            <input type="text" id="first-name" placeholder="Imię" required/>
+            <input type="text" id="first-name" placeholder="Imię" onblur="check('first-name', /^[A-Z][a-z]+$/)"
+                   required/>
 
-            <input type="text" id="last-name" placeholder="Nazwisko" required/>
+            <input type="text" id="last-name" placeholder="Nazwisko" onblur="check('last-name', /^[A-Z][a-z]+$/)"
+                   required/>
 
-            <input type="email" id="email" placeholder="Email" required/>
+            <input type="email" id="email" placeholder="Email" onblur="check('email', /^\S+@\S+\.\S+$/)" required/>
 
             <h2>Sekcja</h2>
 
@@ -41,13 +43,13 @@
                 </div>
             </div>
 
-            <input type="submit" value="Prześlij">
+            <input type="submit" value="Prześlij" onclick="return validate()">
         </form>
     </div>
+
     <div id="logo-container">
         <img src="./img/logo.svg" alt="logo">
     </div>
-
 
 </section>
 

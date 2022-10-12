@@ -62,7 +62,6 @@ label {
 #task-frontend input[type="text"], #task-frontend input[type="email"] {
     display: block;
     margin: 2rem auto;
-    border: 1px solid black;
     border-radius: 0.5rem;
     width: 100%;
     height: 50px;
@@ -91,7 +90,24 @@ input[type="checkbox"] {
     height: 50px;
     text-align: center;
     font-weight: bold;
+    appearance: none;
+    cursor: pointer;
+    transition: all 200ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
 }
 
+#task-frontend input[type="submit"]:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+#task-frontend input[type="submit"]:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.invalid {
+    border: 3px solid red;
+}
 
 
